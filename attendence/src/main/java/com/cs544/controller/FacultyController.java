@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cs544.business.Report;
 import com.cs544.entity.AttendanceRecord;
 import com.cs544.entity.Course;
 import com.cs544.entity.CourseOffering;
@@ -22,11 +23,14 @@ import com.cs544.service.AttendanceRecordService;
 import com.cs544.service.CourseOfferingService;
 import com.cs544.service.CourseService;
 import com.cs544.service.StudentService;
+import com.cs544.service.impl.AttendenceReporter;
 
 @Controller
 @RequestMapping("/faculty")
 public class FacultyController {
 
+	@Autowired
+	private AttendenceReporter attenreport;
 	@Autowired
 	private AttendanceRecordService attendservice;
 	@Autowired 
@@ -53,12 +57,11 @@ public class FacultyController {
 	@RequestMapping(value = "/courseoffering/{courseofferingid}")
 	public String dashwithrecords(Model model,@PathVariable long courseofferingid) {
 		model.addAttribute("page_title", "Faculty-Home");
-		//CourseOffering courseoffering=courseofferingservice.getOneCourseOffering(courseofferingid);
 		
-		List<Student> students=attendservice.getStudentsBycourseofferingId(courseofferingid);
-		//List<AttendanceRecord> records = attendservice.getallAttendance();
-		model.addAllAttributes(students);
-		System.out.println(students);
+		List<Report> reports=attenreport.generateReport(courseofferingid);
+		model.addAllAttributes(reports);
+		System.out.println(reports.toString());
+		System.out.println(reports);
 		
 		return "faculty/home";
 	}
