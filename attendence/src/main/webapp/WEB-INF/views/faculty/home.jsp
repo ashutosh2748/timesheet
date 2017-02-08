@@ -21,7 +21,7 @@
 				</ul>
 			</div>
 			<div class="col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Faculty Dashboard</h1>
 				
 				<h2 class="sub-header">Courses</h2>
 				<div class="table-responsive">

@@ -14,23 +14,18 @@ import com.cs544.entity.Student;
 import com.cs544.service.StudentService;
 
 @Controller
+@RequestMapping("/student")
 public class StudentController {
 
 	@Autowired
 	private StudentService studentservice;
 	
-	@RequestMapping("/dashboard")
-	public String defaultPage() {
-		return "redirect:/student";
-	}
-	
-	@RequestMapping("/student")
+	@RequestMapping("")
 	public String home() {
-		//Helper.hasRole("ROLE_ADMIN")
 		return "student/home";
 	}
 	
-	@RequestMapping(value = "student/{id}/courseofferings")
+	@RequestMapping(value = "/{id}/courseofferings")
 	public String courseOfferings(@PathVariable long id,Model model){
 		List<CourseOffering> courseofferings = studentservice.getCourseOfferingListForStudent(id);
 		System.out.println("calledI");
@@ -41,7 +36,7 @@ public class StudentController {
 		return "student/courseOffering";
 	}
 	
-	@RequestMapping(value = "student/detail/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
 	public String studentDetail(@PathVariable long id, Model model) {
 		Student student = studentservice.get(id);
 		model.addAttribute("student", student);
