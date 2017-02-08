@@ -1,11 +1,14 @@
 package com.cs544.entity;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class CourseOffering {
@@ -14,7 +17,11 @@ public class CourseOffering {
 	private long id;
 	private String courseOfferingId;
 	@ManyToOne
+	@JoinColumn(name="course_id")
 	private Course course;
+	@OneToMany(mappedBy="courseOffering1")
+	private List<Registration> registration;
+	
 	private LocalTime startDate;
 	private LocalTime endDate;
 	@ManyToOne
@@ -55,5 +62,10 @@ public class CourseOffering {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-	
+	public List<Registration> getRegistration() {
+		return registration;
+	}
+	public void setRegistration(List<Registration> registration) {
+		this.registration = registration;
+	}
 }

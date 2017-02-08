@@ -1,8 +1,11 @@
 package com.cs544.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Course {
@@ -11,6 +14,8 @@ public class Course {
 	@Id
 	@GeneratedValue
 	private long id;
+	@OneToMany(mappedBy="course")
+	private List<CourseOffering> courseOfferingList;
 	private String courseId;
 	private String description;
 	public long getId() {

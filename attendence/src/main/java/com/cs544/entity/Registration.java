@@ -3,6 +3,7 @@ package com.cs544.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -11,6 +12,14 @@ public class Registration {
 	@Id
 	@GeneratedValue
 	private long id;
+	@ManyToOne
+	@JoinColumn(name="student_id")
+	private Student student;
+	
+	@ManyToOne
+	@JoinColumn(name="courseOffering_id")
+	private CourseOffering courseOffering1;
+	private double GPA;
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -23,22 +32,18 @@ public class Registration {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	public CourseOffering getCourseOffering() {
-		return courseOffering;
-	}
-	public void setCourseOffering(CourseOffering courseOffering) {
-		this.courseOffering = courseOffering;
-	}
+	
 	public double getGPA() {
 		return GPA;
 	}
 	public void setGPA(double gPA) {
 		GPA = gPA;
 	}
-	@ManyToOne
-	private Student student;
-	@ManyToOne
-	private CourseOffering courseOffering;
-	private double GPA;
-
+	
+	public CourseOffering getCourseOffering1() {
+		return courseOffering1;
+	}
+	public void setCourseOffering1(CourseOffering courseOffering1) {
+		this.courseOffering1 = courseOffering1;
+	}
 }
