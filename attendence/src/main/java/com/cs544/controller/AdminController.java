@@ -10,24 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class HomeController {
+@RequestMapping("/admin")
+public class AdminController {
 	
-	@RequestMapping("/")
-	public String add(Model model) {
-		return "welcome";
+	
+
+	@RequestMapping(value="")
+	public String dashboard(Model model){
+		model.addAttribute("page_title", "Admin-Home");
+		return "Admin/home";
 	}
-//
-	@RequestMapping(value = "/403", method = RequestMethod.GET)
-	public String accesssDenied(Model model) {
-
-		// check if user is logged in
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			UserDetails userDetail = (UserDetails) auth.getPrincipal();
-			model.addAttribute("username", userDetail.getUsername());
-		}
-
-		return "403";
-
-	}
+	
+	
 }
