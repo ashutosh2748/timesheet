@@ -10,5 +10,6 @@ public interface StudentService {
 	public Student findByStudentId(String StudentId);
 	public Student findByBarCode(String barCode);
 	Student findByName(String name);
+	
 
 }	
