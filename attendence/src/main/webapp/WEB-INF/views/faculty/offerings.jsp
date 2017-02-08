@@ -6,27 +6,34 @@
 	<div class="row">
 		<%@include file="sidebar.jsp" %>
 		<div class="col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">Faculty Dashboard</h1>
+			<h1 class="page-header">Course Offerings - </h1>
 
-			<h2 class="sub-header">Courses</h2>
 			<div class="table-responsive">
 				<table class="table table-striped">
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Course Id</th>
-							<th>Course Description</th>
-							<th>Course Offerings</th>
+							<th>Id</th>
+							<th>Start Date</th>
+							<th>End Date</th>
+							<th>Location</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
 						<%! int i = 0; %>
-						<c:forEach items="${courses}" var="course">
+						<c:forEach items="${courseoffering}" var="courseOff">
 							<tr>
 								<td>#<%=++i%></td>
-								<td>${course.courseId}</td>
-								<td>${course.description}</td>
-								<td><a href="faculty/course-offerings/${course.id}" title="View Course Offerings">View</a></td>
+								<td>${courseOff.courseOfferingId}</td>
+								<td>${courseOff.startDate}</td>
+								<td>${courseOff.endDate}</td>
+								<td>${courseOff.location.name}</td>
+								<td>
+									<a href="report/${courseOff.id}" title="View Report">Report</a>
+									|
+									<a href="sessions/${courseOff.id}" title="View Sessions">Sessions</a>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
