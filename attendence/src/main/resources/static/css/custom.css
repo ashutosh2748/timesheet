@@ -128,7 +128,8 @@ body {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 10px;
-	font-size: 16px; 
+	font-size: 16px;
+	margin-bottom: 3px;
 }
 
 .form-signin .form-control:focus {
@@ -145,4 +146,8 @@ body {
 	margin-bottom: 10px;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
+}
+
+.footer {
+	text-align: center;
 }

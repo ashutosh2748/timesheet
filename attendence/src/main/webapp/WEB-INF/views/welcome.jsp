@@ -13,7 +13,7 @@
 	<meta name="author" content="MUM">
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-	<title>Welcome to Attendance Checking Software!</title>
+	<title>Welcome to MUM Attendance Checking Software!</title>
 	<!-- <link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" /> -->
 	<style>
 		.welcome-page{

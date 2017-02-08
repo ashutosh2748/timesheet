@@ -26,25 +26,26 @@ public class StudentController {
 	
 	@RequestMapping("/student")
 	public String home() {
-		return "home";
+		//Helper.hasRole("ROLE_ADMIN")
+		return "student/home";
 	}
 	
 	@RequestMapping(value = "student/{id}/courseofferings")
 	public String courseOfferings(@PathVariable long id,Model model){
 		List<CourseOffering> courseofferings = studentservice.getCourseOfferingListForStudent(id);
-		
+		System.out.println("calledI");
 		for(CourseOffering cs:courseofferings){
 			System.out.println(cs.getCourse().getDescription());
 		}
 		model.addAttribute("courseofferings", courseofferings);
-		return "courseOffering";
+		return "student/courseOffering";
 	}
 	
-	@RequestMapping(value = "/studentdetail/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "student/detail/{id}", method = RequestMethod.GET)
 	public String studentDetail(@PathVariable long id, Model model) {
 		Student student = studentservice.get(id);
 		model.addAttribute("student", student);
-		return "studentDetail";
+		return "student/studentDetail";
 	}
 	
 	
