@@ -19,8 +19,8 @@ public class AttendanceRecord {
 	@Id
 	@GeneratedValue
 	private int id;
-	
-	//private Student student;
+	@ManyToOne
+	private Student student;
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	@ManyToOne

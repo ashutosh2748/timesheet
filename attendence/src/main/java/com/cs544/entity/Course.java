@@ -18,6 +18,13 @@ public class Course {
 	private List<CourseOffering> courseOfferingList;
 	private String courseId;
 	private String description;
+	
+	public List<CourseOffering> getCourseOfferingList() {
+		return courseOfferingList;
+	}
+	public void setCourseOfferingList(List<CourseOffering> courseOfferingList) {
+		this.courseOfferingList = courseOfferingList;
+	}
 	public long getId() {
 		return id;
 	}

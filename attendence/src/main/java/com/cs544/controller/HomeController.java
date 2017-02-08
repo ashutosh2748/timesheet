@@ -34,7 +34,7 @@ public class HomeController {
 
 		return "welcome";
 	}
-
+//
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public String accesssDenied(Model model) {
 
