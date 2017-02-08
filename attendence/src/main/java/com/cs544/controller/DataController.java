@@ -28,7 +28,7 @@ public class DataController {
 			i++;
 			c.setEndDate(date1.plusDays(i));
 			
-			c.setStartDate(date1.plusDays(i));
+			c.setStartDate(date2.plusDays(i));
 			
 		}
 		
