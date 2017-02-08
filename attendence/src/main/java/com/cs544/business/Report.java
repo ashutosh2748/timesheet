@@ -6,26 +6,20 @@ import com.cs544.entity.Student;
 
 public class Report {
 	Student student;
-	long Average;
-	CourseOffering coffering;
+	double average;
 	public Student getStudent() {
 		return student;
 	}
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	public long getAverage() {
-		return Average;
+	public double getAverage() {
+		return average;
 	}
-	public void setAverage(long average) {
-		Average = average;
+	public void setAverage(double average) {
+		this.average = average;
 	}
-	public CourseOffering getCoffering() {
-		return coffering;
-	}
-	public void setCoffering(CourseOffering coffering) {
-		this.coffering = coffering;
-	}
+	
 	
 	
 	
