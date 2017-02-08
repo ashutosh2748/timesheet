@@ -29,15 +29,19 @@ public class StudentController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "student/courseofferings")
-	public String courseOfferings(Model model){
-		List<CourseOffering> courofferings = studentservice.getAllCourseOfferings();
-		model.addAttribute("courofferings", courofferings);
+	@RequestMapping(value = "student/{id}/courseofferings")
+	public String courseOfferings(@PathVariable long id,Model model){
+		List<CourseOffering> courseofferings = studentservice.getCourseOfferingListForStudent(id);
+		
+		for(CourseOffering cs:courseofferings){
+			System.out.println(cs.getCourse().getDescription());
+		}
+		model.addAttribute("courseofferings", courseofferings);
 		return "courseOffering";
 	}
 	
 	@RequestMapping(value = "/studentdetail/{id}", method = RequestMethod.GET)
-	public String studentDetail(@PathVariable int id, Model model) {
+	public String studentDetail(@PathVariable long id, Model model) {
 		Student student = studentservice.get(id);
 		model.addAttribute("student", student);
 		return "studentDetail";

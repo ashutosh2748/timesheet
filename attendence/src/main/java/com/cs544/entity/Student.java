@@ -1,8 +1,12 @@
 package com.cs544.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -20,6 +24,26 @@ public class Student {
 	private String firstName;
 	private String lastName;
 	private String barCode;
+	@OneToMany
+	@JoinColumn(name="student_id2")
+	private List<AttendanceRecord> attendanceRecord;
+	
+	@OneToMany(mappedBy="student")
+	private List<Registration> registrationList;
+	
+	
+	public List<Registration> getRegistrationList() {
+		return registrationList;
+	}
+	public void setRegistrationList(List<Registration> registrationList) {
+		this.registrationList = registrationList;
+	}
+	public List<AttendanceRecord> getAttendanceRecord() {
+		return attendanceRecord;
+	}
+	public void setAttendanceRecord(List<AttendanceRecord> attendanceRecord) {
+		this.attendanceRecord = attendanceRecord;
+	}
 	public String getStudentId() {
 		return studentId;
 	}
