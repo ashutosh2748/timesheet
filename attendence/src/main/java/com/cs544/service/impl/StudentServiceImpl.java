@@ -32,4 +32,11 @@ public class StudentServiceImpl implements StudentService {
 		return null;
 	}
 
+	@Override
+	public Student findByStudentId(String studentId) {
+		// TODO Auto-generated method stub
+		Student student = studentDAO.findByStudentId(studentId);
+		return student;
+	}
+
 }

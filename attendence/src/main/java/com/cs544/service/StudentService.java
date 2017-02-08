@@ -7,7 +7,8 @@ import com.cs544.entity.Student;
 public interface StudentService {
 	
 	public Student get(long id);
-	public Student findByName(String name);
+	public Student findByStudentId(String StudentId);
 	public Student findByBarCode(String barCode);
+	Student findByName(String name);
 
 }	

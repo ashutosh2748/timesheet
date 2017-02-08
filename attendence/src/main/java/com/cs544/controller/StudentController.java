@@ -42,4 +42,6 @@ public class StudentController {
 		model.addAttribute("student", student);
 		return "studentDetail";
 	}
+	
+	
 }
