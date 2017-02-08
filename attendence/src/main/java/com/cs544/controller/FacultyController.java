@@ -69,5 +69,9 @@ public class FacultyController {
 		System.out.println(records.toString());
 		return "faculty/attendancerecords";
 	}
+	
+	
+	
+	
 
 }

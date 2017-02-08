@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.cs544.business.Report;
 import com.cs544.dao.CourseOfferingDAO;
+import com.cs544.dao.StudentDAO;
+import com.cs544.entity.AttendanceRecord;
 import com.cs544.entity.CourseOffering;
 import com.cs544.entity.Student;
 @Service
@@ -19,6 +21,8 @@ public class AttendenceReporter {
 	@Autowired
 	private CourseOfferingDAO courseofferingdao;
 	
+	@Autowired
+	private StudentDAO studentdao;
 	
 	
 	@Autowired
@@ -53,6 +57,21 @@ public class AttendenceReporter {
 			e.printStackTrace();
 		}
 		return days;
+	}
+	
+	public List<AttendanceRecord> generateReportforStudent(long courseofferingid,long studentid){
+		CourseOffering courseoffering=courseofferingdao.findOne(courseofferingid);
+		//Student student=studentdao.findOne(studentid);
+		
+		List<AttendanceRecord> records=attendancerecordservice.getAttendanceByStudentId(studentid);
+		List<AttendanceRecord> filteredrecord=new ArrayList();
+		//long ValidDays=getValidDays(courseoffering);
+		for(AttendanceRecord r:records){
+			if(r.getLocation().equals(courseoffering.getLocation()));
+			filteredrecord.add(r);
+		}
+		return filteredrecord;
+		
 	}
 	
 	

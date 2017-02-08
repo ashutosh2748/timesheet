@@ -11,7 +11,9 @@ public interface AttendanceRecordService {
 
 	public List<AttendanceRecord> getAttendanceBycourseofferingId(Long courseOfferingId);
 
-	List<Student> getStudentsBycourseofferingId(Long courseOfferingId);
+	public List<Student> getStudentsBycourseofferingId(Long courseOfferingId);
+
+	public List<AttendanceRecord> getAttendanceByStudentId(Long StudentId);
 	
 	
 }	

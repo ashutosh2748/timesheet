@@ -29,6 +29,8 @@ public class AttendanceRecordServiceImpl implements AttendanceRecordService {
 	private AttendanceRecordDAO attendanceDAO;
 	@Autowired
 	private CourseOfferingDAO courseofferingDAO;
+	@Autowired
+	private StudentDAO studentDAO;
 	
 	
 	@Override
@@ -57,16 +59,20 @@ public class AttendanceRecordServiceImpl implements AttendanceRecordService {
 	}
 
 	@Override
+	public List<AttendanceRecord> getAttendanceByStudentId(Long StudentId) {
+		// TODO Auto-generated method stub
+		Student student=studentDAO.findOne(StudentId);
+		return student.getAttendanceRecord();
+		
+		//return null;
+	}
+
+	@Override
 	public List<AttendanceRecord> getAttendanceBycourseofferingId(Long courseOfferingId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	
-	
-	
-	
+
 	
 	
 	
