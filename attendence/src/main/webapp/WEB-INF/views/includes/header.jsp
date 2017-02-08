@@ -12,8 +12,11 @@
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 	<title>${page_title}</title>
-	<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="css/custom.css" rel="stylesheet" />
+	<meta content="${page_title}" name="keywords" />
+	<meta content="${page_title}" name="description" />
+	<link href="${pageContext.request.contextPath}/webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" />
 </head> 
 <body>
 	<div class="container">
+	

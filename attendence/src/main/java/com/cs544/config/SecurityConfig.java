@@ -17,20 +17,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource);
-//		.usersByUsernameQuery("select username, password, enabled from users where username=?")
-//		.authoritiesByUsernameQuery("select username, role from authorities where username=?");
 	}
 	
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
-			.antMatchers("/resources/**", "/index").permitAll()	
+			.antMatchers("/resources/**", "/login").permitAll()	
 			.antMatchers("/").permitAll()
-			.antMatchers("/login").anonymous()
-			.antMatchers("/student").access("hasRole('ROLE_ADMIN')")//ROLE_ by default by framework
+			//.antMatchers("/login").anonymous()
+			.antMatchers("/student", "/student/**").access("hasRole('ROLE_STUDENT')")//ROLE_ by default by framework
 		.and()
 			.formLogin()
 	        .loginPage("/login").failureUrl("/login?error")
-	        .successForwardUrl("/dashboard")
+	        //.successForwardUrl("/dashboard")
 	    .and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/login?logout")
