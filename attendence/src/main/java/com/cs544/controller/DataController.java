@@ -29,10 +29,11 @@ public class DataController {
 			c.setEndDate(date1.plusDays(i));
 			
 			c.setStartDate(date1.plusDays(i));
-			courseofferingdao.save(c);
 			
 		}
 		
+		courseofferingdao.save(courselist);
+
 		
 		
 		
