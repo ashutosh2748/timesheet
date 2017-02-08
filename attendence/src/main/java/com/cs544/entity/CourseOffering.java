@@ -1,5 +1,6 @@
 package com.cs544.entity;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class CourseOffering {
 	@OneToMany(mappedBy="courseOffering1")
 	private List<Registration> registration;
 	
-	private LocalTime startDate;
-	private LocalTime endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	@ManyToOne
 	private Location location;
 	public long getId() {
@@ -44,17 +45,17 @@ public class CourseOffering {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-	public LocalTime getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(LocalTime startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
-	public LocalTime getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(LocalTime endDate) {
-		this.endDate = endDate;
+	public void setEndDate(LocalDate date1) {
+		this.endDate = date1;
 	}
 	public Location getLocation() {
 		return location;
