@@ -20,13 +20,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%! int i = 0; %>
+						<c:set var="i" value="0" />
 						<c:forEach items="${courses}" var="course">
+							<c:set var="i" value="${i+1}" />
 							<tr>
-								<td>#<%=++i%></td>
+								<td>#${i}</td>
 								<td>${course.courseId}</td>
 								<td>${course.description}</td>
-								<td><a href="faculty/course-offerings/${course.id}" title="View Course Offerings">View</a></td>
+								<td><a href="${pageContext.request.contextPath}/faculty/course-offerings/${course.id}" title="View Course Offerings">View</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

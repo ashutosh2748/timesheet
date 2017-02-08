@@ -13,23 +13,20 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Id</th>
-							<th>Start Date</th>
-							<th>End Date</th>
-							<th>Location</th>
-							<th>Report</th>
+							<th>Student Id</th>
+							<th>Student Name</th>
+							<th>Average Attendance</th>
 						</tr>
 					</thead>
 					<tbody>
-						<%! int i = 0; %>
-						<c:forEach items="${courseoffering}" var="courseOff">
+						<c:set var="i" value="0" />
+						<c:forEach items="${reports}" var="report">
+							<c:set var="i" value="${i+1}" />
 							<tr>
-								<td>#<%=++i%></td>
-								<td>${courseOff.courseOfferingId}</td>
-								<td>${courseOff.startDate}</td>
-								<td>${courseOff.endDate}</td>
-								<td>${courseOff.location.name}</td>
-								<td><a href="course-offering/${courseOff.id}" title="View Report">View</a></td>
+								<td>#${i}</td>
+								<td>${report.student.studentId}</td>
+								<td>${report.student.firstName} ${report.student.lastName}</td>
+								<td>${report.average} %</td>
 							</tr>
 						</c:forEach>
 					</tbody>

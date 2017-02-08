@@ -21,10 +21,11 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%! int i = 0; %>
+						<c:set var="i" value="0" />
 						<c:forEach items="${courseoffering}" var="courseOff">
+							<c:set var="i" value="${i+1}" />
 							<tr>
-								<td>#<%=++i%></td>
+								<td>#${i}</td>
 								<td>${courseOff.courseOfferingId}</td>
 								<td>${courseOff.startDate}</td>
 								<td>${courseOff.endDate}</td>

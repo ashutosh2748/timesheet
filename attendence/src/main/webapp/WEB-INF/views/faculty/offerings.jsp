@@ -21,18 +21,19 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%! int i = 0; %>
+						<c:set var="i" value="0" />
 						<c:forEach items="${courseoffering}" var="courseOff">
+							<c:set var="i" value="${i+1}" />
 							<tr>
-								<td>#<%=++i%></td>
+								<td>#${i}</td>
 								<td>${courseOff.courseOfferingId}</td>
 								<td>${courseOff.startDate}</td>
 								<td>${courseOff.endDate}</td>
 								<td>${courseOff.location.name}</td>
 								<td>
-									<a href="report/${courseOff.id}" title="View Report">Report</a>
+									<a href="${pageContext.request.contextPath}/faculty/course-offerings/report/${courseOff.id}" title="View Report">Report</a>
 									|
-									<a href="sessions/${courseOff.id}" title="View Sessions">Sessions</a>
+									<a href="${pageContext.request.contextPath}/faculty/course-offerings/sessions/${courseOff.id}" title="View Sessions">Sessions</a>
 								</td>
 							</tr>
 						</c:forEach>
