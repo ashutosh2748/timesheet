@@ -44,7 +44,14 @@ public class AttendenceReporter {
 	private long getValidDays(CourseOffering courseoffering) {
 		// TODO Auto-generated method stub
 	//	 days=courseoffering.getEndDate().minus(courseoffering.getStartDate());
-		long days=ChronoUnit.DAYS.between(courseoffering.getEndDate(), courseoffering.getStartDate());
+		
+		long days=0;
+		try{
+			days=ChronoUnit.DAYS.between(courseoffering.getEndDate(), courseoffering.getStartDate());
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		return days;
 	}
 	
