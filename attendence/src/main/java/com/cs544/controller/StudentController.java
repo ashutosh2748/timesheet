@@ -1,5 +1,7 @@
 package com.cs544.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cs544.entity.CourseOffering;
 import com.cs544.entity.Student;
 import com.cs544.service.StudentService;
 
@@ -28,8 +31,8 @@ public class StudentController {
 	
 	@RequestMapping(value = "student/courseofferings")
 	public String courseOfferings(Model model){
-		//List<CourseOffering> courofferings = studentservice.getAllCourseOfferings();
-		//model.addAttribute("courofferings", courofferings);
+		List<CourseOffering> courofferings = studentservice.getAllCourseOfferings();
+		model.addAttribute("courofferings", courofferings);
 		return "courseOffering";
 	}
 	
