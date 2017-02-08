@@ -151,3 +151,5 @@ body {
 .footer {
 	text-align: center;
 }
+
+a:hover{cursor: pointer;}
