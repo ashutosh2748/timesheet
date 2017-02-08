@@ -1,16 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page session="true"%>
-<html>
-<head>
-	<title>Login</title>
-	<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="css/custom.css" rel="stylesheet" />
-</head> 
-<body>
-	
-	<div class="container">
-
+<%@include file="includes/header.jsp" %>
       <form class="form-signin" name='loginForm' action="<c:url value='/login' />" method='POST'>
         <h2 class="form-signin-heading">Please sign in</h2>
         
@@ -35,12 +23,4 @@
         
         <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Login" />
       </form>
-
-    </div> <!-- /container -->
-	
-	
-	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-	<script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	
-</body>
-</html>
+<%@include file="includes/footer.jsp" %>

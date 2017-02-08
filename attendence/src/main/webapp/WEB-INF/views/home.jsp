@@ -1,21 +1,4 @@
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page session="true"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="MUM">
-	<link rel="icon" href="favicon.ico">
-	<title>Student Dashboard</title>
-	<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="css/custom.css" rel="stylesheet" />
-</head>
-<body>
+<%@include file="includes/header.jsp" %>
 
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
@@ -34,7 +17,13 @@
 					<li><a href="#">Dashboard</a></li>
 					<li><a href="#">Settings</a></li>
 					<li><a href="#">Profile</a></li>
-					<li><a href="#">Help</a></li>
+					<li>
+						<!-- <sec:authorize access="isAuthenticated()"> -->
+							<a href="/logout">
+								Logout
+							</a>
+						<!-- </sec:authorize> -->
+					</li>
 				</ul>
 				<form class="navbar-form navbar-right">
 					<input type="text" class="form-control" placeholder="Search...">
@@ -69,41 +58,7 @@
 			<div class="col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">Dashboard</h1>
 
-				<div class="row placeholders">
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="200" height="200" class="img-responsive"
-							alt="Generic placeholder thumbnail">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="200" height="200" class="img-responsive"
-							alt="Generic placeholder thumbnail">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="200" height="200" class="img-responsive"
-							alt="Generic placeholder thumbnail">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="200" height="200" class="img-responsive"
-							alt="Generic placeholder thumbnail">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
-					</div>
-				</div>
-
+				
 				<h2 class="sub-header">Section title</h2>
 				<div class="table-responsive">
 					<table class="table table-striped">
@@ -236,11 +191,4 @@
 		</div>
 	</div>
 
-	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-	<script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	
-	<script src="http://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
-	<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-
-</body>
-</html>
+<%@include file="includes/footer.jsp" %>
