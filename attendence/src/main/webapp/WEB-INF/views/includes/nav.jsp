@@ -11,8 +11,9 @@
 			<a class="navbar-brand" href="#">Attendance Checking Software!</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
+			<sec:authentication var="principal" property="principal" />
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Welcome, ${username}!</a></li>
+				<li><a href="#">Welcome, ${principal.username}!</a></li>
 				<li><a href="/logout">Logout</a></li>
 			</ul>
 		</div>

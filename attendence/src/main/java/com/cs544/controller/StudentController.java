@@ -3,6 +3,9 @@ package com.cs544.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,29 +30,25 @@ public class StudentController {
 	private AttendenceReporter attenrp;
 	
 	@RequestMapping("")
-	public String home() {
+	public String home(Model model) {
+		String s_id = StudentId();
+		List<CourseOffering> courseofferings = studentservice.getCourseOfferingListForStudent(s_id);
+		model.addAttribute("courseofferings", courseofferings);
 		return "student/home";
 	}
 	
-	@RequestMapping(value = "/{id}/courseofferings")
-	public String courseOfferings(@PathVariable long id,Model model){
-		List<CourseOffering> courseofferings = studentservice.getCourseOfferingListForStudent(id);
-		System.out.println("calledI");
-		for(CourseOffering cs:courseofferings){
-			System.out.println(cs.getCourse().getDescription());
-		}
-		model.addAttribute("courseofferings", courseofferings);
-		return "student/courseOffering";
-	}
-	
-	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/attendance/{courseOid}", method = RequestMethod.GET)
 	public String studentDetail(@PathVariable long courseOid, Model model,@RequestParam long studentid) {
-		List<AttendanceRecord> records=attenrp.generateReportforStudent(courseOid, studentid);
+		List<AttendanceRecord> records = attenrp.generateReportforStudent(courseOid, studentid);
 		model.addAttribute("records", records);
-		return "student/studentDetail";
+		return "student/studentAttendance";
 	}
 	
-	
+	public String StudentId(){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		return userDetail.getUsername();
+	}
 	
 	
 }
