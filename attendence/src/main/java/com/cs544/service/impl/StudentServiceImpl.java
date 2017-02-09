@@ -44,9 +44,9 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public List<CourseOffering> getCourseOfferingListForStudent(Long studentId) {
+	public List<CourseOffering> getCourseOfferingListForStudent(String studentId) {
 			List<com.cs544.entity.Registration> reg = new ArrayList();
-			reg = studentDAO.findOne(studentId).getRegistrationList();
+			reg.addAll(studentDAO.findByStudentId(studentId).getRegistrationList());
 			ArrayList<CourseOffering> courseOfferingList = new ArrayList();
 			for(com.cs544.entity.Registration registration: reg){
 				courseOfferingList.add(registration.getCourseOffering1());

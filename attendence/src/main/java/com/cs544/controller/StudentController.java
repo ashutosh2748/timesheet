@@ -3,6 +3,9 @@ package com.cs544.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,28 +29,30 @@ public class StudentController {
 	@Autowired
 	private AttendenceReporter attenrp;
 	
+	
+	
 	@RequestMapping("")
-	public String home() {
+	public String home(Model model) {
+		String s_id = StudentId();
+		List<CourseOffering> courseofferings = studentservice.getCourseOfferingListForStudent(s_id);
+		model.addAttribute("courseofferings", courseofferings);
 		return "student/home";
 	}
 	
-	@RequestMapping(value = "/{s_id}/courseofferings")
-	public String courseOfferings(@PathVariable String s_id,Model model){
-	//	List<CourseOffering> courseofferings = studentservice.getCourseOfferingListForStudent(id);
-		Student s=studentservice.findByStudentId(s_id);
-		System.out.println(s.getFirstName());
-		
-		//model.addAttribute("courseofferings", courseofferings);
-		return "student/courseOffering";
-	}
-	
-	@RequestMapping(value = "/detail/{courseOid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/attendance/{courseOid}", method = RequestMethod.GET)
 	public String studentDetail(@PathVariable long courseOid, Model model,@RequestParam long studentid) {
-		List<AttendanceRecord> records=attenrp.generateReportforStudent(courseOid, studentid);
+		String s_id = StudentId();
+		List<AttendanceRecord> records = attenrp.generateReportforStudent(courseOid, s_id);
+		System.out.println(records.get(0).getLocation().getName());
 		model.addAttribute("records", records);
-		return "student/studentDetail";
+		return "student/studentAttendance";
 	}
 	
+	public String StudentId(){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		return userDetail.getUsername();
+	}
 	
 	
 	

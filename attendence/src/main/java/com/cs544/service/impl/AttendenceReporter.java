@@ -59,11 +59,12 @@ public class AttendenceReporter {
 		return days;
 	}
 	
-	public List<AttendanceRecord> generateReportforStudent(long courseofferingid,long studentid){
+	public List<AttendanceRecord> generateReportforStudent(long courseofferingid,String s_id){
 		CourseOffering courseoffering=courseofferingdao.findOne(courseofferingid);
-		//Student student=studentdao.findOne(studentid);
+		Student student=studentdao.findByStudentId(s_id);
 		
-		List<AttendanceRecord> records=attendancerecordservice.getAttendanceByStudentId(studentid);
+		
+		List<AttendanceRecord> records=attendancerecordservice.getAttendanceByStudentId(student.getId());
 		List<AttendanceRecord> filteredrecord=new ArrayList();
 		//long ValidDays=getValidDays(courseoffering);
 		for(AttendanceRecord r:records){
