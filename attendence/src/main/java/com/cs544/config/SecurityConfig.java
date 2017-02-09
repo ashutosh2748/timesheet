@@ -19,11 +19,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication().dataSource(dataSource);
 	}
 	
+	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
 			.antMatchers("/resources/**", "/login").permitAll()	
 			.antMatchers("/").permitAll()
-			//.antMatchers("/login").anonymous()
 			.antMatchers("/student", "/student/**").access("hasRole('ROLE_STUDENT')")//ROLE_ by default by framework
 			.antMatchers("/faculty", "/faculty/**").access("hasRole('ROLE_FACULTY')")
 			.antMatchers("/admin", "/admin/**").access("hasRole('ROLE_ADMIN')")

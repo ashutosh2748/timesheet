@@ -40,6 +40,7 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value = "/attendance/{courseOid}", method = RequestMethod.GET)
+
 	public String studentDetail(@PathVariable long courseOid, Model model,@RequestParam long studentid) {
 		String s_id = StudentId();
 		List<AttendanceRecord> records = attenrp.generateReportforStudent(courseOid, s_id);
