@@ -13,11 +13,11 @@ public class Registration {
 	@GeneratedValue
 	private long id;
 	@ManyToOne
-	@JoinColumn(name="student_id")
+	@JoinColumn(name="student_id2")
 	private Student student;
 	
 	@ManyToOne
-	@JoinColumn(name="courseOffering_id")
+	@JoinColumn(name="courseOffering_id2")
 	private CourseOffering courseOffering1;
 	private double GPA;
 	public void setId(long id) {

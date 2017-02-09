@@ -18,7 +18,7 @@ public class CourseOffering {
 	private long id;
 	private String courseOfferingId;
 	@ManyToOne
-	@JoinColumn(name="course_id")
+	@JoinColumn(name="course_id2")
 	private Course course;
 	@OneToMany(mappedBy="courseOffering1")
 	private List<Registration> registration;
@@ -26,7 +26,10 @@ public class CourseOffering {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	@ManyToOne
+	@JoinColumn(name="location_id3")
 	private Location location;
+	@OneToMany(mappedBy="courseOffering4")
+	private List<Session> sessionList;
 	public long getId() {
 		return id;
 	}
@@ -54,8 +57,8 @@ public class CourseOffering {
 	public LocalDate getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(LocalDate date1) {
-		this.endDate = date1;
+	public void setEndDate(LocalDate endDate) {
+		this.endDate = endDate;
 	}
 	public Location getLocation() {
 		return location;
@@ -68,5 +71,11 @@ public class CourseOffering {
 	}
 	public void setRegistration(List<Registration> registration) {
 		this.registration = registration;
+	}
+	public List<Session> getSessionList() {
+		return sessionList;
+	}
+	public void setSessionList(List<Session> sessionList) {
+		this.sessionList = sessionList;
 	}
 }

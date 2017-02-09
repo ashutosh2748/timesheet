@@ -31,10 +31,10 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student findByName(String name) {
+	public Student findByStudentId(String studentId) {
 		// TODO Auto-generated method stub
-	//	Student student=studentDAO.findAll();
-		return null;
+		Student student=studentDAO.findByStudentId(studentId);
+		return student;
 	}
 
 	@Override
