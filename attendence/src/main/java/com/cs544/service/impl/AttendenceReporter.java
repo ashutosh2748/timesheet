@@ -35,7 +35,7 @@ public class AttendenceReporter {
 		long ValidDays=getValidDays(courseoffering);
 		for(Student s:students){
 			int count=s.getAttendanceRecord().size();
-			double avgPercentage=count/ValidDays;
+			double avgPercentage=0.0+count/ValidDays*100;
 			Report report=new Report();
 			report.setAverage(avgPercentage);
 			report.setStudent(s);
