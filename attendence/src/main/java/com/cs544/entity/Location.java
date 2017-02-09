@@ -17,6 +17,8 @@ public class Location {
 	private String name;
 	@OneToMany(mappedBy="location")
 	private List<AttendanceRecord> attendanceRecord;
+	@OneToMany(mappedBy="location")
+	private List<CourseOffering> courseOfferingList;
 	public List<AttendanceRecord> getAttendanceRecord() {
 		return attendanceRecord;
 	}
@@ -41,5 +43,11 @@ public class Location {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public List<CourseOffering> getCourseOfferingList() {
+		return courseOfferingList;
+	}
+	public void setCourseOfferingList(List<CourseOffering> courseOfferingList) {
+		this.courseOfferingList = courseOfferingList;
 	}
 }

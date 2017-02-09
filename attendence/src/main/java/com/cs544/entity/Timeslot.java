@@ -15,6 +15,8 @@ public class Timeslot {
 	private String description;
 	private LocalTime beginTime;
 	private LocalTime endTime;
+	
+	
 	public long getId() {
 		return id;
 	}

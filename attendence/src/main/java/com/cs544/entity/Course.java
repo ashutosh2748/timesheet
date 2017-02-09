@@ -16,15 +16,10 @@ public class Course {
 	private long id;
 	@OneToMany(mappedBy="course")
 	private List<CourseOffering> courseOfferingList;
+	
 	private String courseId;
 	private String description;
-	
-	public List<CourseOffering> getCourseOfferingList() {
-		return courseOfferingList;
-	}
-	public void setCourseOfferingList(List<CourseOffering> courseOfferingList) {
-		this.courseOfferingList = courseOfferingList;
-	}
+	private String name;
 	public long getId() {
 		return id;
 	}
@@ -42,6 +37,18 @@ public class Course {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public List<CourseOffering> getCourseOfferingList() {
+		return courseOfferingList;
+	}
+	public void setCourseOfferingList(List<CourseOffering> courseOfferingList) {
+		this.courseOfferingList = courseOfferingList;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

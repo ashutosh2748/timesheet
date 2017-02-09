@@ -19,15 +19,14 @@ public class AttendanceRecord {
 	@Id
 	@GeneratedValue
 	private int id;
+	
+	private LocalDate date;
+	
 	@ManyToOne
-	private Student student;
-	@Temporal(TemporalType.DATE)
-	private Date date;
+	@JoinColumn(name="location_id2")
+	private Location location;
 	@ManyToOne
 	private Timeslot timeslot;
-	@ManyToOne
-	@JoinColumn(name="location_id")
-	private Location location;
 	
 	public Location getLocation() {
 		return location;
@@ -47,14 +46,15 @@ public class AttendanceRecord {
 //	public void setStudent(Student student) {
 //		this.student = student;
 //	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	
 	public Timeslot getTimeslot() {
 		return timeslot;
+	}
+	public LocalDate getDate() {
+		return date;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 	public void setTimeslot(Timeslot timeslot) {
 		this.timeslot = timeslot;

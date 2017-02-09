@@ -12,7 +12,7 @@ import com.cs544.entity.Student;
 public interface StudentService {
 	
 	public Student get(long id);
-	public Student findByName(String name);
+	public Student findByStudentId(String name);
 	public Student findByBarCode(String barCode);
 	public List<CourseOffering> getCourseOfferingListForStudent(Long studentId);
 	public List<AttendanceRecord> getAttendanceRecordForCourseOffering(List<CourseOffering> CourseOfferingList);

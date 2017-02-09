@@ -11,4 +11,3 @@ insert into authorities(username,authority) values('admin','ROLE_ADMIN');
 insert into authorities(username,authority) values('faculty','ROLE_FACULTY');
 insert into authorities(username,authority) values('student','ROLE_STUDENT');
 
-insert into student(bar_code, first_name, last_name, student_id) values('0000233332312', 'Krishna', 'Bhat', 'CS100090');

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cs544.entity.AttendanceRecord;
 import com.cs544.entity.CourseOffering;
-
+import com.cs544.entity.Student;
 import com.cs544.service.StudentService;
 import com.cs544.service.impl.AttendenceReporter;
 
@@ -31,18 +31,17 @@ public class StudentController {
 		return "student/home";
 	}
 	
-	@RequestMapping(value = "/{id}/courseofferings")
-	public String courseOfferings(@PathVariable long id,Model model){
-		List<CourseOffering> courseofferings = studentservice.getCourseOfferingListForStudent(id);
-		System.out.println("calledI");
-		for(CourseOffering cs:courseofferings){
-			System.out.println(cs.getCourse().getDescription());
-		}
-		model.addAttribute("courseofferings", courseofferings);
+	@RequestMapping(value = "/{s_id}/courseofferings")
+	public String courseOfferings(@PathVariable String s_id,Model model){
+	//	List<CourseOffering> courseofferings = studentservice.getCourseOfferingListForStudent(id);
+		Student s=studentservice.findByStudentId(s_id);
+		System.out.println(s.getFirstName());
+		
+		//model.addAttribute("courseofferings", courseofferings);
 		return "student/courseOffering";
 	}
 	
-	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/detail/{courseOid}", method = RequestMethod.GET)
 	public String studentDetail(@PathVariable long courseOid, Model model,@RequestParam long studentid) {
 		List<AttendanceRecord> records=attenrp.generateReportforStudent(courseOid, studentid);
 		model.addAttribute("records", records);
